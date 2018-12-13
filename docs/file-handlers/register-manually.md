@@ -50,7 +50,7 @@ To obtain an access token with these permissions, you can use a tool like [Postm
 3. Click **Get New Access Token**. A dialog will appear asking for a number of fields to be completed.
 4. In your browser, navigate to the [Azure Portal](https://portal.azure.com) and sign-in.
 5. Select **Azure Active Directory**, then click on **App registrations**.
-6. Click **Add** to create a new application, which will be used to manage file handler manifests.
+6. Click **New application registration** to create a new application, which will be used to manage file handler manifests.
     1. Name the application `File handler registration tool` and set the sign-on URL to the value Postman tells you to use: `https://www.getpostman.com/oauth2/callback`.
     2. Scroll to the end of the application list and click on **File handler registration tool**.
     3. Copy the **application ID** value (guid) and paste it into Postman next to **Client ID**.
@@ -64,11 +64,12 @@ To obtain an access token with these permissions, you can use a tool like [Postm
     8. Copy the value of the new key, and paste it into Postman next to **Client Secret**.
 7. In Postman, complete the access token form, by providing the following values: 
     * **Token name**: `File handler registration tool`
+    * **Callback URL**: `https://www.getpostman.com/oauth2/callback`
     * **Auth URL**: `https://login.microsoftonline.com/common/oauth2/authorize?resource=https://graph.windows.net`
     * **Access Token URL**: `https://login.microsoftonline.com/common/oauth2/token`
     * **Grant Type**: `Authorization code`
 8. Click **Request Token** and sign in as a tenant administrator.
-9. After consenting to the permissions, Postman will show you a token for **File handler registration tool**. Select that entry, and change **Add token to** to **Header** and then click **Use Token** to append the new access token.
+9. After consenting to the permissions, Postman will show you a token for **File handler registration tool**. Select that entry, and click **Use Token** to append the new access token.
 10. Make a request to find your file handler application manifest, by entering the URL: `https://graph.windows.net/myorganization/applications/?api-version=1.6`.
 11. Scan through the API response to locate the app with the **displayName** property matching your file handler application. Note the **objectId** guid for the application (this is different from the appId value used in OAuth flows). You will need this value below.
 12. Make a request to add the file handler manifest to your application.
